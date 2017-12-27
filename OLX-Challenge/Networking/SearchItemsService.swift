@@ -12,11 +12,13 @@ class SearchItemsService {
     typealias JSONDictionary = [String: Any]
     typealias QueryResult = ([Item]?, String) -> ()
     
-    var items: [Item] = []
-    var errorMessage = ""
+    fileprivate var items: [Item] = []
+    fileprivate var errorMessage = ""
     
-    let defaultSession = URLSession(configuration: .default)
-    var dataTask: URLSessionDataTask?
+    fileprivate let defaultSession = URLSession(configuration: .default)
+    fileprivate var dataTask: URLSessionDataTask?
+    
+    fileprivate let storageController = StorageController()
     
     func getSearchResults(searchTerm: String, pageSize:Int, offset: Int, completion: @escaping QueryResult) {
         dataTask?.cancel()
@@ -26,19 +28,24 @@ class SearchItemsService {
 
             guard let url = urlComponents.url else { return }
 
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
+            dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
+                guard let safeSelf = self else {return}
+                defer { safeSelf.dataTask = nil }
 
                 if let error = error {
-                    self.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
+                    safeSelf.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
+                    safeSelf.items = safeSelf.storageController.fetchItems()
                 } else if let data = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
-                    self.updateSearchResults(data)
+                    safeSelf.updateSearchResults(data)
 
-                    DispatchQueue.main.async {
-                        completion(self.items, self.errorMessage)
-                    }
+                } else {
+                    safeSelf.items = safeSelf.storageController.fetchItems()
+                }
+                
+                DispatchQueue.main.async {
+                    completion(safeSelf.items, safeSelf.errorMessage)
                 }
             }
 
@@ -65,6 +72,9 @@ class SearchItemsService {
         for itemDictionary in array {
             if let itemDictionary = itemDictionary as? JSONDictionary {
                 items.append(Item(dictionary: itemDictionary))
+                DispatchQueue.global(qos: .background).async {
+                    self.storageController.save(self.items)
+                }
                 index += 1
             } else {
                 errorMessage += "Problem parsing itemDictionary\n"

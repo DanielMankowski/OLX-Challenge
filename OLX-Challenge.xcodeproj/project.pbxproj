@@ -21,6 +21,7 @@
 		2EAD51721FF2CB4100DDAD3C /* ListItemsViewController+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD51711FF2CB4100DDAD3C /* ListItemsViewController+SearchBarDelegate.swift */; };
 		2EAD51741FF2CE3000DDAD3C /* SearchItemsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD51731FF2CE3000DDAD3C /* SearchItemsService.swift */; };
 		532308F33E7866680381DFB9 /* Pods_OLX_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFA9A427DBBE7459303688B /* Pods_OLX_Challenge.framework */; };
+		65994D7A1FF3313B00A7FF40 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65994D791FF3313B00A7FF40 /* StorageController.swift */; };
 		659BEE811FF312DB001AA5F0 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659BEE801FF312DB001AA5F0 /* UIColor+Custom.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		2EAD51711FF2CB4100DDAD3C /* ListItemsViewController+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListItemsViewController+SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		2EAD51731FF2CE3000DDAD3C /* SearchItemsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemsService.swift; sourceTree = "<group>"; };
 		4501F5B4DF73169FE8113F4E /* Pods-OLX-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OLX-Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OLX-Challenge/Pods-OLX-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		65994D791FF3313B00A7FF40 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 		659BEE801FF312DB001AA5F0 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		E13788E273364A1880770A6E /* Pods-OLX-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OLX-Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-OLX-Challenge/Pods-OLX-Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		EBFA9A427DBBE7459303688B /* Pods_OLX_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OLX_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 				2EAD515C1FF27CC600DDAD3C /* View */,
 				2EAD515B1FF27CBF00DDAD3C /* Controller */,
 				2EAD515D1FF27CCB00DDAD3C /* Networking */,
+				65994D781FF3312500A7FF40 /* Storage */,
 				2EAD516C1FF2829100DDAD3C /* Supporting Files */,
 			);
 			path = "OLX-Challenge";
@@ -152,6 +155,14 @@
 				659BEE801FF312DB001AA5F0 /* UIColor+Custom.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65994D781FF3312500A7FF40 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				65994D791FF3313B00A7FF40 /* StorageController.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		747960AD2A578C141EEB9E23 /* Frameworks */ = {
@@ -311,6 +322,7 @@
 				2EAD516E1FF2C8D700DDAD3C /* ItemCollectionViewCell.swift in Sources */,
 				2EAD51491FF2790C00DDAD3C /* AppDelegate.swift in Sources */,
 				2EAD51691FF281C500DDAD3C /* ItemDetailsImageViewController.swift in Sources */,
+				65994D7A1FF3313B00A7FF40 /* StorageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,7 +65,11 @@ class ListItemsViewController: UIViewController {
             guard let safeSelf = self else { return}
             safeSelf.isLoading = false
             if let results = results {
-                safeSelf.searchResults.append(contentsOf: results)
+                if errorMessage.isEmpty {
+                    safeSelf.searchResults.append(contentsOf: results)
+                } else {
+                    safeSelf.searchResults = results
+                }
                 safeSelf.collectionView.reloadData()
                 safeSelf.refresher.endRefreshing()
             }
