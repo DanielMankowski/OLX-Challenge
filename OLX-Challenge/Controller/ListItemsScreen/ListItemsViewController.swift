@@ -58,13 +58,14 @@ class ListItemsViewController: UIViewController {
         configureUI()
     }
     
-    func loadItems(term: String = "", pageSize: Int, offset: Int){
+    func loadItems(term: String = "", pageSize: Int, offset: Int, removeOldData: Bool = false){
         isLoading = true
         searchItemsService.getSearchResults(searchTerm: term, pageSize: pageSize, offset: offset) { [weak self] results, errorMessage in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            guard let safeSelf = self else { return}
+            guard let safeSelf = self else { return }
             safeSelf.isLoading = false
             if let results = results {
+                if removeOldData { safeSelf.searchResults.removeAll() }
                 if errorMessage.isEmpty {
                     safeSelf.searchResults.append(contentsOf: results)
                 } else {
@@ -78,9 +79,8 @@ class ListItemsViewController: UIViewController {
     }
     
     @objc func refreshData(){
-        searchResults.removeAll()
         let term = searchBar.text ?? ""
-        loadItems(term: term, pageSize: initialPageSize, offset: 0)
+        loadItems(term: term, pageSize: initialPageSize, offset: 0, removeOldData: true)
     }
     
     func configureUI(){
