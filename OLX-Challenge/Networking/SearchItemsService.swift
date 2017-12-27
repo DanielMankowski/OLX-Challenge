@@ -17,13 +17,14 @@ class SearchItemsService {
     
     fileprivate let defaultSession = URLSession(configuration: .default)
     fileprivate var dataTask: URLSessionDataTask?
+    fileprivate let urlBase = "http://api-v2.olx.com/items"
     
     fileprivate let storageController = StorageController()
     
     func getSearchResults(searchTerm: String, pageSize:Int, offset: Int, completion: @escaping QueryResult) {
         dataTask?.cancel()
         
-        if var urlComponents = URLComponents(string: "http://api-v2.olx.com/items") {
+        if var urlComponents = URLComponents(string: urlBase) {
             urlComponents.query = "location=www.olx.com.ar&searchTerm=\(searchTerm)&pageSize=\(pageSize)&offset=\(offset)"
 
             guard let url = urlComponents.url else { return }

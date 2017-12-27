@@ -13,11 +13,12 @@ class ItemDetailsViewController: UIViewController {
     //MARK: - Properties
     var item: Item!
     
-    let imageSegue = "ItemDetailsImage"
-    let dataSegue  = "ItemDetailsData"
+    fileprivate let imageSegue = "ItemDetailsImage"
+    fileprivate let dataSegue  = "ItemDetailsData"
+    fileprivate static let itemDetailsVC = "ItemDetailsViewController"
     
     static func instantiateVC(item: Item) -> ItemDetailsViewController{
-        let thisVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ItemDetailsViewController") as! ItemDetailsViewController
+        let thisVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: itemDetailsVC) as! ItemDetailsViewController
         thisVC.item = item
         
         return thisVC

@@ -31,6 +31,7 @@ class ListItemsViewController: UIViewController {
     fileprivate var refresher:UIRefreshControl!
     
     fileprivate let reuseIdentifier = "ItemCollectionViewCell"
+    fileprivate static let listItemsVC = "ListItemsViewController"
     fileprivate var isLoading = false
     let initialPageSize = 20
     fileprivate let sectionInsets = UIEdgeInsets(top: 8.0, left: 10.0, bottom: 8.0, right: 10.0)
@@ -43,7 +44,7 @@ class ListItemsViewController: UIViewController {
     }
     
     static func instantiateVC(delegate: ListItemsDelegate) -> ListItemsViewController{
-        let thisVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ListItemsViewController") as! ListItemsViewController
+        let thisVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: listItemsVC) as! ListItemsViewController
         thisVC.delegate = delegate
         
         return thisVC
