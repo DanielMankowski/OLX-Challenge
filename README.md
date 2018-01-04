@@ -1,27 +1,24 @@
 # OLX-Challenge
-Este es un proyecto de ejemplo como parte de una entrevista para la empresa OLX
-## Arquitectura del proyecto
-Para realizar el proyecto elegí una arquitectura MVC, siempre procurando cumplir con los principios SOLID. Para ello se trata de separar
-las responsabilidades de cada pantalla asi como el flujo entre pantallas en diferentes ViewControllers.
-Si es de su interés aquí hay un articulo muy interesante al respecto: [A Better MVC](https://davedelong.com/blog/2017/11/06/a-better-mvc-part-1-the-problems/)
-## Aspectos técnicos
-A los fines de demostrar conocimientos me parecio lo mas adecuado realizar el proyecto de la forma mas nativa posible, por ello voy a
-detallar que componentes utilice y que librería podria haber utilizado.
-- Para el consumo de la API URLSession y URLSessionTask las mismas se ejecutan en background y implementan cache por default. Podría haber utilizado Alamofire
-- Para persistir los datos utilizo el filesystem del dispositivo y los guardo simplemente en un plist, aunque por el tipo de proyecto ya que los items a mostrar
-y sus estados (precio/disponibilidad) son variables no parece tener mucho sentido persistir los datos en el dispositivo.
-- Para descargar las imágenes use la libreria Nuke, agregada al proyecto mediante CocoaPods.(Cuando descarguen el proyecto deben ejecutar un POD Install localmente)
-## Requerimientos cubiertos
-Intente cubrir todos los requerimientos solicitados:
-- Paginado del contenido
-- Detalle del artículo
+This is an example project as interview processing of OLX company.
+## Project Architecture
+I have chosen MVC architecture to make the project, always trying to meet SOLID metodology. For that I was tried to separate responsabilities of each screen like so flow among screens of differents ViewControllers.
+If you are intersting, this an article about that: [A Better MVC](https://davedelong.com/blog/2017/11/06/a-better-mvc-part-1-the-problems/)
+## Technical Details
+In order to demonstrate knowledgment I think that the most appropiate way to do the project is as native as possible, so I am going to list the components that I have used and what library I could have used.
+- For API calls: **URLSession and URLSessionTask**. Both are executed in background y implements cache by default. I could have use Alamofire or AFNetwork
+- For data persistece: I have used native data filesystem of device and save it as a plist, although in this project type given that items to show and its states (price/disponibility) are variables, in my opinion it is not make sense to persist the data in device.
+- For download images: I have used Nuke libreary, added to project by CocoaPods. (when dowload proyect, please do not foget to execute pod install in console)
+## Requirements
+I have tried to cover all requerimients requested:
+- Paging
+- Item detail
 - Pull to refresh
-- Uso de protocolo custom (cuando se selecciona una celda para avisarle al viewcontroller que controla el flow)
-- Persistencia en disco
-- Cache de imágenes
+- Custom protocol (at the moment to select a cell when comunicate with ViewController in charge of flow)
+- Disk Persistence
+- Images cache
 - Portrait/Landscape
-## Aclaraciones/Mejoras
-Por razones de tiempo en las pantallas faltan los refresh (UIActivityIndicator) y mostrar mensajes de error si se produce
-algun error por ejemplo al consultar la API (UIAlertController).
-Tambien se pueden mejorar la collectionview donde se muestran las imagenes, haciendo que se ajuste su tamaño dependiendo de la imagen.
-Etc etc etc
+## Clarifications/Improvements
+By time reasons in screens are missing refreshs (UIActivityIndicator) and show error messages if some error happens. By example at the moment to call API (UIAlertController).
+Besides, a good idea could be improve collectionview where images are showing, the cell could be ajusted depends of images size.
+Search Bar coud disappear when scrolling.
+And so on
